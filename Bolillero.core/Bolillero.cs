@@ -1,48 +1,66 @@
-namespace Bolillero.core;
+using Bolillero.core;
+
+namespace BolilleroApp.core;
 public class Bolillero
 {
     public List<int> Adentro { get; set; }
     public List<int> Jugada { get; set; }
     public List<int> Afuera { get; set; }
-
-    public IAzar Azar { get; set; }
-
-    public Bolillero(IAzar azar)
+    public IAzar Random { get; set; }
+    public Bolillero(IAzar random)
     {
         this.Adentro = new List<int>();
         this.Jugada = new List<int>();
         this.Afuera = new List<int>();
-        this.Azar = azar;
+        Random= random;
     }
-
     public int SacarBolillas()
     {
-        var indice = Azar.SacarIndice(this.Adentro);
+        var indice = Random.SacarIndice(this.Adentro);
         var elemento = Adentro[indice];
 
+
         this.Afuera.Add(elemento);
-        this.Adentro.RemoveAt(elemento);
-
-        return indice;
+        this.Adentro.RemoveAt(indice);
+        return elemento;
     }
-
-    public bool Jugar(List<int> jugada)
-
+    public bool Jugar(List<int> Jugada)
     {
-        for(int i=0; i <= jugada.Count() ; i ++);
+        var ax = 0;
+
+        for (ax = 0; ax <= Jugada.Count(); ax++)
         {
-            SacarBolillas();
+            var indice = SacarBolillas();
+            if (indice != Jugada[ax])
+            {
+                return false;
+            }
+
         }
-        return false;
+
+        return true;
     }
 
     public int JugarNVeces(List<int> Jugada, int cantidad)
     {
         var Victoria = 0;
+        for(int i =0; i <= cantidad; i++)
+        {
+            var intento = Jugar(Jugada);
 
-        Jugar(Jugada);
-
+            if(intento== true)
+            {
+                Victoria=+1;
+            }
+        }
         return Victoria;
+    }
+    public void ReingresarBolillas()
+    {
+        var elemento1 = SacarBolillas();
+
+        Adentro.Add(elemento1);
+        Afuera.Remove(elemento1);
     }
 
 }

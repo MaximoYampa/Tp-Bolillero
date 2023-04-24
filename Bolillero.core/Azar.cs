@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Bolillero.core;
-public class Azar
+public class Azar : IAzar
 {
     private Random _random { get; set; }
     public Azar()
