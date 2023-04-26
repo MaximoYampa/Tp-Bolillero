@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Bolillero.core;
-public class Azar : IAzar
+namespace BolilleroApp.core;
+public class Azar: IAzar
 {
     private Random _random { get; set; }
     public Azar()
@@ -13,3 +8,4 @@ public class Azar : IAzar
         => _random.Next(0, numeros.Count);
     
 }
+

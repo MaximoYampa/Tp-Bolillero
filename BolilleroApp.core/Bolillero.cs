@@ -1,37 +1,43 @@
-using Bolillero.core;
-
 namespace BolilleroApp.core;
+
 public class Bolillero
 {
     public List<int> Adentro { get; set; }
     public List<int> Jugada { get; set; }
     public List<int> Afuera { get; set; }
     public IAzar Random { get; set; }
-    public Bolillero(IAzar random)
+    public Bolillero(IAzar random, int bolillas)
     {
+        
         this.Adentro = new List<int>();
+        CrearBolillas(bolillas);
         this.Jugada = new List<int>();
         this.Afuera = new List<int>();
         Random= random;
     }
-    public int SacarBolillas()
+    public int SacarBolilla()
     {
         var indice = Random.SacarIndice(this.Adentro);
         var elemento = Adentro[indice];
-
 
         this.Afuera.Add(elemento);
         this.Adentro.RemoveAt(indice);
         return elemento;
     }
+    public void CrearBolillas(int bolillas)
+    {
+        for (int i = 0; i<bolillas; i++)
+            Adentro.Add(i);
+        
+    }
     public bool Jugar(List<int> Jugada)
     {
         var ax = 0;
 
-        for (ax = 0; ax <= Jugada.Count(); ax++)
+        for (ax = 0; ax < Jugada.Count(); ax++)
         {
-            var indice = SacarBolillas();
-            if (indice != Jugada[ax])
+            var bolilla = SacarBolilla();
+            if (bolilla != Jugada[ax])
             {
                 return false;
             }
@@ -57,10 +63,8 @@ public class Bolillero
     }
     public void ReingresarBolillas()
     {
-        var elemento1 = SacarBolillas();
-
-        Adentro.Add(elemento1);
-        Afuera.Remove(elemento1);
+        Adentro.AddRange(Afuera);
+        Afuera.Clear();
     }
 
 }
