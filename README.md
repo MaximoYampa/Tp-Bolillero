@@ -11,17 +11,17 @@
 
 ## Computación 2023
 
-**Asignatura**: <!-- REEMPLAZA este comentario por el nombre de la asignatura -->
+**Asignatura**:  Programacion sobre redes 
 
-**Nombre TP**: <!-- REEMPLAZA este comentario por el nombre del TP -->
+**Nombre TP**:  Bolillero Parte 1 
 
-**Apellido y nombre Alumno**: <!-- REEMPLAZA este comentario por tu apellido y nombre -->
+**Apellido y nombre Alumno**:  Yampa Maximo 
 
-**Curso**: <!-- REEMPLAZA este comentario por tu curso -->
+**Curso**:  6to7ma 
 
 # Título del Proyecto
 
-_Acá va un párrafo que describa lo que es el proyecto._
+_El proyecto se trata de una simulacion de un bolillero usando el lenguaje de programacion c# , en simples palabras el proyecto esta programado para poder realizar una simulacion exacta de una partida de bingo  ._
 
 ## Comenzando 🚀
 
