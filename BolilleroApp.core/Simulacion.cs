@@ -14,7 +14,7 @@ public class Simulacion
         var division = cantidadDeSimulaciones / hilos;
 
 
-        for (int i = 0; i < cantidadDeSimulaciones; i++) ;
+        for (int i = 0; i < cantidadDeSimulaciones; i++)
         {
             var BolilleroCopia = copia.Clonar();
 
