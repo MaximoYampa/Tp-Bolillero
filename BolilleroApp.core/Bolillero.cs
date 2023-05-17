@@ -8,13 +8,26 @@ public class Bolillero
     public IAzar Random { get; set; }
     public Bolillero(IAzar random, int bolillas)
     {
-        
+
         this.Adentro = new List<int>();
         CrearBolillas(bolillas);
         this.Jugada = new List<int>();
         this.Afuera = new List<int>();
-        Random= random;
+        Random = random;
     }
+
+
+    private Bolillero(Bolillero original)
+    {
+        Adentro = new List<int>(original.Adentro);
+        Afuera = new List<int>(original.Afuera);
+        Jugada = new List<int>(original.Jugada);
+        Random = original.Random;
+    }
+
+    public Bolillero Clonar()
+    => new Bolillero(this);
+
     public int SacarBolilla()
     {
         var indice = Random.SacarIndice(this.Adentro);
@@ -26,9 +39,9 @@ public class Bolillero
     }
     public void CrearBolillas(int bolillas)
     {
-        for (int i = 0; i<bolillas; i++)
+        for (int i = 0; i < bolillas; i++)
             Adentro.Add(i);
-        
+
     }
     public bool Jugar(List<int> Jugada)
     {
@@ -50,13 +63,13 @@ public class Bolillero
     public int JugarNVeces(List<int> Jugada, int cantidad)
     {
         var Victoria = 0;
-        for(int i =0; i <= cantidad; i++)
+        for (int i = 0; i <= cantidad; i++)
         {
             var intento = Jugar(Jugada);
 
-            if(intento== true)
+            if (intento == true)
             {
-                Victoria=+1;
+                Victoria = +1;
             }
         }
         return Victoria;
