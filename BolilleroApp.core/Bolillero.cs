@@ -3,7 +3,6 @@ namespace BolilleroApp.core;
 public class Bolillero
 {
     public List<int> Adentro { get; set; }
-    public List<int> Jugada { get; set; }
     public List<int> Afuera { get; set; }
     public IAzar Random { get; set; }
     public Bolillero(IAzar random, int bolillas)
@@ -11,7 +10,6 @@ public class Bolillero
 
         this.Adentro = new List<int>();
         CrearBolillas(bolillas);
-        this.Jugada = new List<int>();
         this.Afuera = new List<int>();
         Random = random;
     }
@@ -21,7 +19,6 @@ public class Bolillero
     {
         Adentro = new List<int>(original.Adentro);
         Afuera = new List<int>(original.Afuera);
-        Jugada = new List<int>(original.Jugada);
         Random = original.Random;
     }
 
@@ -43,29 +40,28 @@ public class Bolillero
             Adentro.Add(i);
 
     }
-    public bool Jugar(List<int> Jugada)
+    public bool Jugar(List<int> jugada)
     {
         var ax = 0;
 
-        for (ax = 0; ax < Jugada.Count(); ax++)
+        for (ax = 0; ax < jugada.Count(); ax++)
         {
             var bolilla = SacarBolilla();
-            if (bolilla != Jugada[ax])
+            if (bolilla != jugada[ax])
             {
                 return false;
             }
-
         }
-
         return true;
     }
 
-    public int JugarNVeces(List<int> Jugada, int cantidad)
+    public int JugarNVeces(List<int> jugada, int cantidad)
     {
+        ReingresarBolillas();
         var Victoria = 0;
         for (int i = 0; i <= cantidad; i++)
         {
-            var intento = Jugar(Jugada);
+            var intento = Jugar(jugada);
 
             if (intento == true)
             {
