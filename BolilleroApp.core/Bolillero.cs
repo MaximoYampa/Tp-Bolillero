@@ -57,10 +57,11 @@ public class Bolillero
 
     public int JugarNVeces(List<int> jugada, int cantidad)
     {
-        ReingresarBolillas();
+        
         var Victoria = 0;
         for (int i = 0; i <= cantidad; i++)
         {
+            ReingresarBolillas();
             var intento = Jugar(jugada);
 
             if (intento == true)
